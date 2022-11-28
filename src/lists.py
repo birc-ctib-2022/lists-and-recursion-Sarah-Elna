@@ -50,7 +50,7 @@ def length(x: List[T]) -> int:
 
 def add(x: List[int]) -> int:
     """
-    Compute the length of x.
+    Compute the sum of elements in x.
 
     >>> add(None)
     0
@@ -71,7 +71,11 @@ def contains(x: List[T], e: T) -> bool:
     >>> contains(L(1, L(2, L(3, None))), 2)
     True
     """
-    ...
+    if x.head == e:
+        return True
+    if x.tail == None:
+        return False
+    return contains(x.tail)
 
 
 def drop(x: List[T], k: int) -> List[T]:
@@ -86,7 +90,10 @@ def drop(x: List[T], k: int) -> List[T]:
     >>> drop(x, 3)
     L(4, None)
     """
-    ...
+    if k == 0:
+        return x
+    else:
+        return drop(x.tail, k-1)
 
 
 def keep(x: List[T], k: int) -> List[T]:
@@ -100,8 +107,11 @@ def keep(x: List[T], k: int) -> List[T]:
     >>> keep(x, 3)
     L(1, L(2, L(3, None)))
     """
-    ...
-
+    if k == 0:
+        x.tail = None
+        return x
+    else:
+        return keep(x.tail, k-1)
 
 def concat(x: List[T], y: List[T]) -> List[T]:
     """
@@ -110,7 +120,11 @@ def concat(x: List[T], y: List[T]) -> List[T]:
     >>> concat(L(1, L(2, None)), L(3, L(4, None)))
     L(1, L(2, L(3, L(4, None))))
     """
-    ...
+    if x.tail == None:
+        x.tail = y
+        return x
+    else:
+        concat(x.tail, y)
 
 
 def append(x: List[T], e: T) -> List[T]:
@@ -120,7 +134,11 @@ def append(x: List[T], e: T) -> List[T]:
     >>> append(L(1, L(2, None)), 3)
     L(1, L(2, L(3, None)))
     """
-    ...
+    if x.tail == None:
+        x.tail = L(e, None)
+        return x
+    else:
+        return append(x.tail, e)
 
 
 def rev(x: List[T]) -> List[T]:
@@ -130,7 +148,11 @@ def rev(x: List[T]) -> List[T]:
     >>> rev(L(1, L(2, L(3, None))))
     L(3, L(2, L(1, None)))
     """
-    ...
+    if length(x) == 0:
+        return []
+    else:
+        return concat(x[-1], rev(x[-1]))
+# Got help from https://stackoverflow.com/questions/216119/how-do-i-reverse-a-list-using-recursion-in-python
 
 
 # Tail-recursive versions ###########################################
