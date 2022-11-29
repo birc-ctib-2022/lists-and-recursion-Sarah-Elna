@@ -105,14 +105,14 @@ def test_rev() -> None:
         assert to_python_list(rev(y)) == x[::-1]
 
 
-def test_missing() -> None:
-    """
-    Remind you that you might want to add some tests.
+# def test_missing() -> None:
+#     """
+#     Remind you that you might want to add some tests.
 
-    The existing tests only test the direct recursive functions.
-    You should also write tests for the tail-recursive and the
-    looping versions, or alternatively add those functions to
-    the existing ones. If we don't test, we can be reasonably
-    sure that our code doesn't work.
-    """
-    assert False, "If you want more tests you have to write them."
+#     The existing tests only test the direct recursive functions.
+#     You should also write tests for the tail-recursive and the
+#     looping versions, or alternatively add those functions to
+#     the existing ones. If we don't test, we can be reasonably
+#     sure that our code doesn't work.
+#     """
+#     assert False, "If you want more tests you have to write them."
